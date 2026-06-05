@@ -50,20 +50,20 @@
     "@angular/build": "^22.0.0",
     "@angular/cli": "^22.0.0",
     "@angular/compiler-cli": "^22.0.0",
-    "@commitlint/cli": "^20.4.3",
+    "@commitlint/cli": "^21.0.2",
     "@commitlint/config-conventional": "^20.4.3",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.58.2",
-    "@vitest/coverage-v8": "^4.0.18",
+    "@vitest/coverage-v8": "^4.1.8",
     "angular-eslint": "^21.4.0",
     "eslint": "^10.0.3",
     "husky": "^9.1.7",
-    "jsdom": "^27.1.0",
-    "lint-staged": "^16.3.2",
+    "jsdom": "^29.1.1",
+    "lint-staged": "^17.0.7",
     "madge": "^8.0.0",
     "prettier": "^3.8.1",
     "typescript": "~6.0.3",
     "typescript-eslint": "^8.56.1",
-    "vitest": "^4.0.8"
+    "vitest": "^4.1.8"
   }
 }
