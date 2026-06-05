@@ -2,6 +2,7 @@ name: CI
 
 permissions:
   contents: read
+  security-events: write
 
 on:
   push:
@@ -41,3 +42,13 @@ jobs:
 
       - name: E2E Tests
         run: npm run e2e
+
+      - name: Fallow analysis
+        uses: fallow-rs/fallow@v2
+        with:
+          format: sarif
+
+      - name: Upload Fallow results to Code Scanning
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: fallow-results.sarif
