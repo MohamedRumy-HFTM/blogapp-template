@@ -14,7 +14,7 @@
     "analyze:deps:all": "madge src/main.ts --ts-config tsconfig.json --image ./deps/blogapp-template/_all.png",
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui",
-    "serve:e2e": "http-server dist/app/browser -p 4200 --silent -c-1"
+    "serve:e2e": "serve dist/app/browser -l 4200 --single"
   },
   "prettier": {
     "printWidth": 100,
@@ -65,12 +65,12 @@
     "@vitest/coverage-v8": "^4.1.8",
     "angular-eslint": "^21.4.0",
     "eslint": "^10.0.3",
-    "http-server": "^14.1.1",
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",
     "lint-staged": "^17.0.7",
     "madge": "^8.0.0",
     "prettier": "^3.8.1",
+    "serve": "^14.2.6",
     "typescript": "~6.0.3",
     "typescript-eslint": "^8.56.1",
     "vitest": "^4.1.8"
