@@ -1,6 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 
-import blogData from '../../../data/blogs.json';
+import { BlogService } from '../../../shared/blog';
 import { BlogCard } from '../blog-card/blog-card';
 import { Blog } from '../blog.model';
 
@@ -11,7 +11,9 @@ import { Blog } from '../blog.model';
   styleUrl: './blog-overview-page.scss',
 })
 export class BlogOverviewPage {
-  protected readonly blogs = signal<Blog[]>(blogData as Blog[]);
+  private readonly blogService = inject(BlogService);
+
+  protected readonly blogs = signal<Blog[]>(this.blogService.getAll());
 
   protected onLike(blogId: number): void {
     this.blogs.update((blogs) =>

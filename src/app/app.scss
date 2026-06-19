@@ -41,3 +41,8 @@
     color: var(--mat-sys-primary);
   }
 }
+
+.active-link {
+  font-weight: 700;
+  text-decoration: underline;
+}
