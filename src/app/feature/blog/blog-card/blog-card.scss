@@ -1,0 +1,14 @@
+.blog-card {
+  max-width: 600px;
+}
+
+img {
+  max-height: 260px;
+  object-fit: cover;
+}
+
+mat-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}

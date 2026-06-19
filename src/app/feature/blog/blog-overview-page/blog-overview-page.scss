@@ -1,0 +1,13 @@
+.blog-overview-page {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.blog-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.empty-state {
+  color: rgba(0, 0, 0, 0.6);
+}

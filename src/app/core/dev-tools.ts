@@ -1,6 +1,9 @@
 import { effect, Signal } from '@angular/core';
 
-interface RegisteredSignal { name: string; signal: Signal<unknown> };
+interface RegisteredSignal {
+  name: string;
+  signal: Signal<unknown>;
+}
 
 const registeredSignals: RegisteredSignal[] = [];
 
