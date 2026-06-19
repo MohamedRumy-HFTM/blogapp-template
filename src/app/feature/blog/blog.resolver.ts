@@ -5,7 +5,7 @@ import { BlogService } from '../../shared/blog';
 import { Blog } from './blog.model';
 
 export const blogResolver: ResolveFn<Blog | undefined> = (route) => {
-  const blogService = inject(BlogService);
+  const blogService: BlogService = inject(BlogService);
   const id = Number(route.paramMap.get('id'));
   return blogService.getById(id);
 };
