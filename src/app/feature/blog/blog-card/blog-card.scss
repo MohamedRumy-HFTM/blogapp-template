@@ -12,6 +12,15 @@
     object-fit: cover;
   }
 
+  mat-card-title a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   mat-card-actions {
     @include mix.flex-center(vars.$spacing-xs);
 

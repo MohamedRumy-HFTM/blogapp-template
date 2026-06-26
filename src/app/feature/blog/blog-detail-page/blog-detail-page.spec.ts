@@ -2,11 +2,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
 import { Blog } from '../blog.model';
-import { BlogCard } from './blog-card';
+import { BlogDetailPage } from './blog-detail-page';
 
-describe('BlogCard', () => {
-  let component: BlogCard;
-  let fixture: ComponentFixture<BlogCard>;
+describe('BlogDetailPage', () => {
+  let component: BlogDetailPage;
+  let fixture: ComponentFixture<BlogDetailPage>;
 
   const testBlog: Blog = {
     id: 1,
@@ -23,14 +23,13 @@ describe('BlogCard', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BlogCard],
+      imports: [BlogDetailPage],
       providers: [provideRouter([])],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(BlogCard);
-    fixture.componentRef.setInput('model', testBlog);
+    fixture = TestBed.createComponent(BlogDetailPage);
+    fixture.componentRef.setInput('blog', testBlog);
     component = fixture.componentInstance;
-    fixture.detectChanges();
     await fixture.whenStable();
   });
 
