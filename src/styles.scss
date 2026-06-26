@@ -1,20 +1,5 @@
-@use '@angular/material' as mat;
-
-// ── Light theme (azure primary) ──
-$light-theme: mat.define-theme(
-  (
-    color: (
-      theme-type: light,
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
-    ),
-  )
-);
-
-// ── Apply light theme as default on <html> ──
-html {
-  @include mat.all-component-themes($light-theme);
-}
+@use 'variables' as vars;
+@use 'theme';
 
 html,
 body {
@@ -23,5 +8,5 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: vars.$font-family-base;
 }

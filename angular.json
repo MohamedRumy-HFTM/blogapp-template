@@ -16,7 +16,7 @@
       "architect": {
         "build": {
           "builder": "@angular/build:application",
-          "options": {
+                    "options": {
             "outputPath": "dist/app",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
@@ -29,7 +29,10 @@
             ],
             "styles": [
               "src/styles.scss"
-            ]
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles"]
+            }
           },
           "configurations": {
             "production": {

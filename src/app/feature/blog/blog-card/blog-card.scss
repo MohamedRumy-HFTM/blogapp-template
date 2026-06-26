@@ -1,23 +1,31 @@
+@use 'variables' as vars;
+@use 'mixins' as mix;
+
 .blog-card {
-  max-width: 600px;
-}
+  max-width: vars.$card-max-width;
+  border-radius: vars.$radius-lg;
+  overflow: hidden;
+  @include mix.hover-lift;
 
-img {
-  max-height: 260px;
-  object-fit: cover;
-}
-
-mat-card-title a {
-  color: inherit;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
+  img {
+    max-height: vars.$card-image-max-height;
+    object-fit: cover;
   }
-}
 
-mat-card-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
+  mat-card-title a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  mat-card-actions {
+    @include mix.flex-center(vars.$spacing-xs);
+
+    button:hover {
+      color: var(--mat-sys-primary);
+    }
+  }
 }
