@@ -1,0 +1,25 @@
+@use 'variables' as vars;
+
+@mixin flex-center($gap: vars.$spacing-sm) {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin responsive-grid($min-column-width: vars.$grid-min-column-width, $gap: vars.$spacing-md) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($min-column-width, 1fr));
+  gap: $gap;
+}
+
+// Hover-Effekt: leichtes Anheben + Schatten
+@mixin hover-lift($scale: 1.02) {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: scale($scale);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  }
+}

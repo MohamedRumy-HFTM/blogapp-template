@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 
-import { BlogService } from '../../../services/blog';
+import { BlogService } from '../../../shared/blog';
 import { BlogCard } from '../blog-card/blog-card';
 import { Blog } from '../blog.model';
 
