@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
+import { BlogService } from '../../../services/blog';
 import { BlogOverviewPage } from './blog-overview-page';
 
 describe('BlogOverviewPage', () => {
@@ -9,6 +11,15 @@ describe('BlogOverviewPage', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [BlogOverviewPage],
+      providers: [
+        provideRouter([]),
+        {
+          provide: BlogService,
+          useValue: {
+            getBlogs: () => Promise.resolve([]),
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(BlogOverviewPage);
