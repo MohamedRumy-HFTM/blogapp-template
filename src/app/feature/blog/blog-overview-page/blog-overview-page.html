@@ -3,8 +3,8 @@
 
   @if (state.loading()) {
     <mat-spinner [diameter]="40" aria-label="Blogs werden geladen" />
-  } @else if (state.error(); as error) {
-    <p class="error-state">{{ error }}</p>
+  } @else if (state.error(); as message) {
+    <p class="error-state">{{ message }}</p>
   } @else {
     <div class="blog-toolbar">
       <label>
