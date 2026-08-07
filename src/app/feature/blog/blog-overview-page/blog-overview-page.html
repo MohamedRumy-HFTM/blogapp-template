@@ -1,12 +1,32 @@
 <section class="blog-overview-page">
   <h1>Blog</h1>
 
-  @if (loading()) {
-    <p class="loading-state">Laden...</p>
+  @if (state.loading()) {
+    <mat-spinner [diameter]="40" aria-label="Blogs werden geladen" />
+  } @else if (state.error(); as error) {
+    <p class="error-state">{{ error }}</p>
   } @else {
+    <div class="blog-toolbar">
+      <label>
+        Autor:
+        <select
+          #authorSelect
+          [value]="state.selectedAuthor()"
+          (change)="state.setAuthor(authorSelect.value)"
+        >
+          <option value="all">Alle Autoren</option>
+          @for (author of state.authors(); track author) {
+            <option [value]="author">{{ author }}</option>
+          }
+        </select>
+      </label>
+
+      <span class="blog-count">{{ state.blogCount() }} Blog-Posts</span>
+    </div>
+
     <div class="blog-list">
-      @for (blog of blogs(); track blog.id) {
-        <app-blog-card [model]="blog" (liked)="onLike($event)" />
+      @for (blog of state.filteredBlogs(); track blog.id) {
+        <app-blog-card [model]="blog" (liked)="state.toggleLike($event)" />
       } @empty {
         <p class="empty-state">Es sind noch keine Blog-Posts vorhanden.</p>
       }

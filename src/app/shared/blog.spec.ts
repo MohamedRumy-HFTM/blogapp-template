@@ -62,7 +62,7 @@ describe('BlogService', () => {
     await expect(resultPromise).resolves.toEqual([validBlog]);
   });
 
-  it('should return an empty array when a required field is missing', async () => {
+  it('should throw when a required field is missing', async () => {
     const blogWithoutTitle = {
       id: 1,
       contentPreview: 'Vorschautext',
@@ -80,11 +80,10 @@ describe('BlogService', () => {
 
     request.flush(createResponse([blogWithoutTitle]));
 
-    await expect(resultPromise).resolves.toEqual([]);
-    expect(console.error).toHaveBeenCalled();
+    await expect(resultPromise).rejects.toThrow('Das Backend hat ungültige Blog-Daten geliefert.');
   });
 
-  it('should return an empty array when a field has the wrong type', async () => {
+  it('should throw when a field has the wrong type', async () => {
     const blogWithWrongType = {
       ...validBlog,
       likes: 'zwölf',
@@ -95,7 +94,6 @@ describe('BlogService', () => {
 
     request.flush(createResponse([blogWithWrongType]));
 
-    await expect(resultPromise).resolves.toEqual([]);
-    expect(console.error).toHaveBeenCalled();
+    await expect(resultPromise).rejects.toThrow('Das Backend hat ungültige Blog-Daten geliefert.');
   });
 });
