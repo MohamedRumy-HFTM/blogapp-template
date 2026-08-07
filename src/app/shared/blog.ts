@@ -18,21 +18,15 @@ export class BlogService {
   private blogs = blogData as Blog[];
 
   async getBlogs(): Promise<Blog[]> {
-    try {
-      const response = await firstValueFrom(this.http.get<unknown>(this.apiUrl));
-      const result = BlogPageSchema.safeParse(response);
+    const response = await firstValueFrom(this.http.get<unknown>(this.apiUrl));
+    const result = BlogPageSchema.safeParse(response);
 
-      if (!result.success) {
-        console.error('Das Backend hat ungültige Blog-Daten geliefert.', result.error);
-        return [];
-      }
-
-      this.blogs = result.data.data;
-      return this.blogs;
-    } catch (error) {
-      console.error('Blogs konnten nicht geladen werden.', error);
-      return [];
+    if (!result.success) {
+      throw new Error('Das Backend hat ungültige Blog-Daten geliefert.');
     }
+
+    this.blogs = result.data.data;
+    return this.blogs;
   }
 
   async createBlog(blog: Blog): Promise<Blog> {
