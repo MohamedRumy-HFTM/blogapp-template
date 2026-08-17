@@ -9,6 +9,18 @@
     >Blog</a
   >
   <a mat-button routerLink="/about" routerLinkActive="active-link">About</a>
+
+  @if (authStore.loading()) {
+    <span class="user-name">…</span>
+  } @else {
+    @if (authStore.isAuthenticated()) {
+      <span class="user-name">{{ authStore.user()?.name }}</span>
+      <button mat-button type="button" (click)="authStore.logout()">Logout</button>
+    } @else {
+      <a mat-button routerLink="/login" routerLinkActive="active-link">Login</a>
+    }
+  }
+
   <button
     mat-icon-button
     type="button"
