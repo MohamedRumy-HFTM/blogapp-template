@@ -4,6 +4,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
+import { AuthStore } from './services/auth-store';
+
 const THEME_KEY = 'theme-preference';
 
 @Component({
@@ -21,6 +23,8 @@ const THEME_KEY = 'theme-preference';
 })
 export class App {
   protected readonly title = 'HFTM Web Applications (IN353)';
+
+  protected readonly authStore = inject(AuthStore);
 
   private readonly document = inject(DOCUMENT);
 

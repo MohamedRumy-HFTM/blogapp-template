@@ -16,6 +16,11 @@ mat-toolbar {
     font-weight: 700;
     text-decoration: underline;
   }
+
+  .user-name {
+    margin-left: vars.$spacing-sm;
+    font-weight: 500;
+  }
 }
 
 .content {

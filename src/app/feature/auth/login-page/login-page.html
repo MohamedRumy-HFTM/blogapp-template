@@ -1,0 +1,11 @@
+<section class="login-page">
+  <h1>Login</h1>
+
+  @if (errorMessage(); as message) {
+    <p class="error-state">{{ message }}</p>
+  }
+
+  <p>Melde dich über den zentralen Login an, um Beiträge zu erstellen.</p>
+
+  <button mat-raised-button type="button" (click)="login()">Mit Keycloak anmelden</button>
+</section>
