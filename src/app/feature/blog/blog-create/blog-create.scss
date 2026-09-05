@@ -1,0 +1,17 @@
+.blog-create {
+  display: grid;
+  gap: 1rem;
+  max-width: 600px;
+
+  label {
+    display: grid;
+    gap: 0.25rem;
+  }
+}
+
+.field-errors {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--mat-sys-error);
+  font-size: 0.875rem;
+}
