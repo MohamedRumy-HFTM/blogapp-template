@@ -1,5 +1,4 @@
 @use 'variables' as vars;
-@use 'mixins' as mix;
 
 .blog-overview-page {
   display: grid;
@@ -11,8 +10,23 @@
   }
 }
 
+// Mobile First: 1 Spalte. Ab 768px 2, ab 1024px 3.
 .blog-list {
-  @include mix.responsive-grid;
+  display: flex;
+  flex-wrap: wrap;
+  gap: vars.$spacing-md;
+
+  app-blog-card {
+    flex: 0 1 100%;
+
+    @media (min-width: 768px) {
+      flex-basis: calc((100% - #{vars.$spacing-md}) / 2);
+    }
+
+    @media (min-width: 1024px) {
+      flex-basis: calc((100% - #{vars.$spacing-md * 2}) / 3);
+    }
+  }
 }
 
 .empty-state {

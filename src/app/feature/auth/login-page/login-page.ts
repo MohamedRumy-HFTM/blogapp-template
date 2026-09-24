@@ -3,6 +3,9 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { environment } from '../../../../environments/environment';
 
+// Nur projekt-interne Pfade: beginnt mit "/", aber nicht mit "//" oder "/\"
+const SAFE_RETURN_URL = /^\/(?![/\\])/;
+
 @Component({
   selector: 'app-login-page',
   imports: [MatButtonModule],
@@ -12,6 +15,12 @@ export class LoginPage {
   // Query-Parameter kommen dank withComponentInputBinding() direkt als Inputs an
   readonly returnUrl = input('/');
   readonly error = input<string>();
+
+  /** Open-Redirect-Schutz: externe Ziele aus dem Query-Parameter verwerfen. */
+  protected readonly safeReturnUrl = computed(() => {
+    const url = this.returnUrl();
+    return SAFE_RETURN_URL.test(url) ? url : '/';
+  });
 
   protected readonly errorMessage = computed(() => {
     switch (this.error()) {
@@ -27,7 +36,7 @@ export class LoginPage {
   });
 
   protected login(): void {
-    const target = encodeURIComponent(this.returnUrl());
+    const target = encodeURIComponent(this.safeReturnUrl());
     window.location.href = `${environment.bffUrl}/auth/login?returnUrl=${target}`;
   }
 }
