@@ -36,6 +36,10 @@
           },
           "configurations": {
             "production": {
+              "index": {
+                "input": "src/index.prod.html",
+                "output": "index.html"
+              },
               "budgets": [
                 {
                   "type": "initial",
@@ -77,6 +81,11 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "headers": {
+              "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' ws://localhost:* http://localhost:7071 https://d-cap-blog-backend---v2.whitepond-b96fee4b.westeurope.azurecontainerapps.io; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+            }
+          },
           "configurations": {
             "production": {
               "buildTarget": "blogapp-template:build:production"
