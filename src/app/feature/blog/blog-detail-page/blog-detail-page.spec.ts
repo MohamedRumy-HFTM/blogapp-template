@@ -36,4 +36,11 @@ describe('BlogDetailPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show a not-found message when the resolver returns undefined', async () => {
+    fixture.componentRef.setInput('blog', undefined);
+    await fixture.whenStable();
+
+    expect(fixture.nativeElement.textContent).toContain('Blog-Post nicht gefunden.');
+  });
 });
